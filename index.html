@@ -1,0 +1,346 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Document</title>
+  <meta name="keywords" content=" "/>
+	<meta name="description" content="" />
+
+  <style>
+    * {
+      margin: 0; padding: 0;box-sizing:border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #container {
+      overflow: hidden;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+
+    #background_video {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      height: 100%; width: 100%;
+    }
+
+    #video_cover {
+      position: absolute;
+      width: 100%; height: 100%;
+      background: url('video_cover.jpeg') no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    #video_controls {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    #play img {
+      width: 100px;
+    }
+    #pause img {
+      width: 90px;
+    }
+    #pause {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      #video_controls {
+        display: none;
+      }
+    }
+    body {
+      text-align: center;
+      font-family: 'proxima-nova', Helvetica;
+    }
+    #container {
+      height: 100%;
+    }
+    #overlay {
+      position: absolute;
+      top: 0; right: 0; left: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    #main_content {
+      width:1000px;
+      height:500px;
+      z-index: 2;
+      position: relative;
+      display: inline-block;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .tabs-vertical{
+      width:100%;height:100%; 
+    }
+    .tabs-vertical ul{
+       float: left;
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding-left: 0;
+    }
+    .tabs-vertical ul li a{
+      display: block;
+    text-decoration: none;
+    color: #656a6d;
+    border: 1px solid transparent;
+    border-right: 0;
+    border-left: 0;
+    padding: 16px 40px 16px 20px;
+    }
+    .tab-active{
+          border-color: #dddddd;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 0px #EFEFEF;
+    }
+    .tabs-vertical .tabs-content-placeholder{
+       overflow: hidden;
+      border-left: 1px solid #dddddd;
+      font-weight: normal;
+      background-color: #fff;
+      padding: 20px 40px 45px;
+      margin: 0 auto;
+      box-shadow: -3px 0 0px #F3F3F3;
+      text-align: center;
+    }
+    .tabs-vertical .tabs-content-placeholder div.tab-content-active{
+      display: block;
+    }
+    #main_content h1 {
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'proxima-nova-condensed', Helvetica;
+      color: #fff;
+      font-size: 35px;
+    }
+
+    #main_content .sub_head {
+      color: rgba(255,255,255,0.5);
+      font-size: 18px;
+    }
+
+    #main_content .info {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    #links {
+      margin-top: 50px;
+    }
+
+    #links a {
+      border: 2px solid rgba(255,255,255,0.20);
+      border-radius: 61px;
+      font-size: 12px;
+      color: #FFFFFF;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 10px 25px;
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+    }
+    #footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      margin: 10px;
+      font-size: 12px;
+    }
+    #footer a:first-child {
+      float: left;
+    }
+    #footer a:last-child {
+      float: right;
+    }
+    .tabs-content-placeholder img{
+      width:400px;height: 400px; 
+    }
+    .box{
+      width: 100%;
+      height: 100%;
+    }
+    .title{
+      width: 100%;
+      height: 50px;
+    }
+    .title div{
+      width: 20%;
+      height: 100%;
+      float:left;
+      font-size: 20px;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+    }
+    .title div:nth-child(1){
+      background: url(img/1.png);
+    }
+    .title div:nth-child(2){
+      background: url(img/2.png);
+    }
+    .title div:nth-child(3){
+      background: url(img/3.png);
+    }
+    .title div:nth-child(4){
+      background: url(img/4.png);
+    }
+    .title div:nth-child(5){
+      background: url(img/5.png);
+    }
+    .title div:hover{
+      border-top: 1px solid #00ffff;
+      border-left: 1px solid #00ffff;
+      border-right: 1px solid #00ffff;
+      border-radius: 10px;
+    }
+    .con{
+      width: 100%;
+      height: 450px;
+      position: relative;
+    }
+    .con div{
+      width: 100%;
+      height: 100%;
+      font-size: 30px; 
+      float: left;
+      text-align: center;
+      line-height: 350px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      display: none;
+      border: 1px solid #fff;
+      border-radius: 10px;
+    }
+    .con div ul {
+      width:100%;height:100%; 
+      list-style: none;
+    }
+    .con div ul li{
+      width: 250px;height: 180px;
+      float: left;
+      margin-top:20px;
+      margin-left:62.5px;
+      list-style: none;
+      border: 1px solid #fff;
+      border-radius: 10px;
+    }
+    .con div ul li:hover{
+      border: 1px solid #00ffff;
+    }
+    .con div ul li a{
+      width: 100%;height:100px;display: block; 
+      font-size: 30px;
+      text-align: center;line-height: 100px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .con div ul li a:hover{
+      font-size:40px; 
+    }
+    .con div ul li p{
+      width:100%;height:80px;
+      display: block;
+      font-size: 16px;
+      color:#ffffff;
+      text-align: center;
+      line-height: 25px;
+    }
+  </style>
+  <script src="jquery.js"></script>
+  <script>
+  $(function(){
+    $(".title>div").mouseover(function(){
+      var index=$(this).index(".title>div");
+      $(".con>div").eq(index).show().siblings().hide();
+      // $(".cla>div").hide(300).eq(index).show();
+
+    })
+  })
+  </script>
+</head>
+<body>
+  <div id="container">
+    <video id="background_video" loop muted autoplay="autoplay"></video>
+    <div id="video_cover"></div>
+    <div id="overlay"></div>
+
+    <div id="video_controls">
+      <span id="play">
+        <img src="play.png">
+      </span>
+      <span id="pause">
+        <img src="pause.png">
+      </span>
+    </div>
+
+    <section id="main_content">
+      <div class="box">
+        <div class="title">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="con">
+          <div style="display:block;">
+              <ul>
+                <li><a href="">新闻APP</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+                <li><a href="https://zhaosiqi.github.io/hualvtu/">画旅途APP</a><p>全套界面设计，集攻略、交友、美图等于一身的APP</p></li>
+                <li><a href="">工作APP</a><p>全套界面设计，人性化的考虑，后台添加数据到数据库，前台交互。本套APP使用angular.js和node.js</p></li>
+              </ul>
+          </div>
+          <div>
+            <ul>
+                <li><a href="https://zhaosiqi.github.io/yingtai/">银泰官网</a><p>初级HTML+Css+Js布局</p></li>
+                <li><a href="https://zhaosiqi.github.io/huanteng/message.html">欢腾鞋业</a><p>全套界面设计，集攻略、交友、美图等于一身的APP</p></li>
+                <li><a href="https://zhaosiqi.github.io/qianxi/">千禧</a><p>千禧酒店</p></li>
+                <li><a href="">京东商城</a><p>全套界面设计，集攻略、交友、美图等于一身的APP</p></li>
+              </ul>
+          </div>
+          <div>
+            <ul>
+              <li><a href="">canvas画板</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+               <li><a href="">canvas游戏</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+              <li><a href="">canvas粒子动画</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+              <li><a href="">3droom</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+              <li><a href="">3d动画</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+              <li><a href="">CSS3动画</a><p>关联数据库，采用爬虫获取数据,采用swiper移动插件等</p></li>
+             </ul>  
+          </div>
+          <div>
+            <ul>
+             <li><a href="">Git常用的指令</a><p>很完整的Git常用指令</p></li>
+             </ul>
+          </div>
+          <div>
+            <ul>
+             <li><a href="">个人博客</a><p>采用z-blog搭建后台，个人文章发布</p></li>
+             <li><a href="http://weavesilk.com/">有趣网站</a><p>健美酷炫的canvas动画制作</p></li>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="bideo.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

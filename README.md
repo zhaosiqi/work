@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+HTML5 Background Video
+======================
 
-You can use the [editor on GitHub](https://github.com/zhaosiqi/work/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Want to play a video in the background of a container or `body` itself ? This plugin will help you do exactly that. I'd suggest you to [read this article](http://codetheory.in/html5-fullscreen-background-video/) too.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[**Demo**](http://rishabhp.github.io/bideo.js/)
 
-### Markdown
+Features
+--------
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Resizing
 
-```markdown
-Syntax highlighted code block
+The `video` element in use will automatically adapt to the container's dimensions. It will also resize as the browser window resizes.
 
-# Header 1
-## Header 2
-### Header 3
+### Overlay
 
-- Bulleted
-- List
+Plugin doesn't supports any overlay as it is easy to implement that with plain HTML/CSS in [your code](http://codetheory.in/html5-fullscreen-background-video/#overlays).
 
-1. Numbered
-2. List
+### Video Cover
 
-**Bold** and _Italic_ and `Code` text
+Video might take a few seconds to load, especially because the sources are added via JS which is something you'll load after the DOM's loading. Till then you may want to show a video cover which'll be same as the first frame or the video (or some other image).
 
-[Link](url) and ![Image](src)
-```
+The support for this is not in the plugin as it's fairly simple to achieve this via just HTML/CSS (just like overlays). Check the demo!
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Network Speed
 
-### Jekyll Themes
+[Read this](http://codetheory.in/html5-fullscreen-background-video/#network_speed).
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zhaosiqi/work/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Options
+-------
 
-### Support or Contact
+Check `main.js`.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+More on HTML5 Video/Audio
+-------------------------
+
+- https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
+- http://www.w3schools.com/tags/ref_av_dom.asp
